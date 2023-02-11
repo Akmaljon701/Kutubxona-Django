@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamma Mualliflar</title>
+</head>
+<body>
+    <br>
+    <a href="/">◀Ortga</a>
+    <h1>Mualliflar</h1>
+    <br>
+    <form method="get"> {% csrf_token %}
+        <input type="text" name="qidirish">
+        <button type="submit">Qidirish</button>
+    </form>
+    <br>
+    {% for muallif in mualliflar %}
+    <p>{{muallif.id}}.<a href="/muallif/{{muallif.id}}/">{{muallif.ism}}</a></p>
+    {% endfor %}
+    <br>
+    <br>
+    <h1>Ma'lumot qo'shish:</h1>
+    <form action="/mualliflar/" method="post">{% csrf_token %}
+        {{forma.as_p}}
+        <button type="submit">Qo'shish</button>
+    </form>
+
+</body>
+</html>

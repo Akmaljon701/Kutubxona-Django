@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitob</title>
+</head>
+<body>
+    <br>
+    <a href="/kitoblar/">◀Ortga</a>
+    <h1>Tanlangan kitob:</h1>
+    <p>Nomi: {{kitob.nom}}</p>
+    <p>Sahifasi: {{kitob.sahifa}}</p>
+    <p>Janri: {{kitob.janr}}</p>
+    <p>Muallifi: {{kitob.muallif}}</p>
+    <br>
+    <a href="/kitob_ochrish/{{kitob.id}}/"><button>O'chrish</button></a>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h1>Tahrirlash:</h1>
+    <form method="post"> {% csrf_token %}
+        <label>Nom:</label>
+        <input type="text" name="n" value="{{kitob.nom}}">
+        <br>
+        <br>
+        <label>Sahifa:</label>
+        <input type="number" name="s" value="{{kitob.sahifa}}">
+        <br>
+        <br>
+        <label>Janr:</label>
+        <select name="j">
+            <option value="Badiiy">Badiiy</option>
+            <option value="Ilmiy">Ilmiy</option>
+            <option value="Hujjatli">Hujjatli</option>
+        </select>
+        <br>
+        <br>
+        <label>Muallif:</label>
+        <select name="m">
+            <option value="{{kitob.muallif.id}}">{{kitob.muallif.ism}}</option>
+            {% for i in mualliflar %}
+                {% if i.id != kitob.muallif.id %}
+            <option value="{{i.id}}">{{i.ism}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <button type="submit">Yangilash</button>
+    </form>
+</body>
+</html>

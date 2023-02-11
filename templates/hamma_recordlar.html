@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recordlar</title>
+</head>
+<body>
+    <br>
+    <a href="/">◀Ortga</a>
+    <h1>Recordlar</h1>
+    <br>
+    <form action="/recordlar/" method="get"> {% csrf_token %}
+        <input type="text" name="qidirish">
+        <button type="submit">Qidirish</button>
+    </form>
+
+    {% for record in recordlar %}
+    <p>{{record.id}}. <a href="/record/{{record.id}}/">{{record.talaba}} - {{record.kitob}}</a></p>
+    {% endfor %}
+    <br>
+    <br>
+    <h1>Ma'lumot qo'shish:</h1>
+    <form action="/recordlar/" method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Qo'shish</button>
+    </form>
+</body>
+</html>

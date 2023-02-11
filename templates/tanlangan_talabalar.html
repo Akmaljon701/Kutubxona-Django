@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talaba</title>
+</head>
+<body>
+    <br>
+    <a href="/talabalar/">◀Ortga</a>
+    <h1>Tanlangan talaba:</h1>
+    <p>Ism: {{ talaba.ism }}</p>
+    <p>Kurs: {{ talaba.kurs }}</p>
+    <p>Kitob soni: {{ talaba.kitob_soni }}</p>
+    <p>Bitruvchi: {{ talaba.bitruvchi }}</p>
+    <a href="/talaba_ochrish/{{ talaba.id }}/"><button>O'chrish</button></a>
+    <hr>
+    <h1>Tahrirlash:</h1>
+    <br>
+    <form method="post"> {% csrf_token %}
+        <label>Ism: </label>
+        <input type="text" name="i" value="{{talaba.ism}}">
+        <br>
+        <br>
+        <label>Kurs: </label>
+        <input type="number" name="k" value="{{talaba.kurs}}">
+        <br>
+        <br>
+        <label>Kitob soni: </label>
+        <input type="number" name="k_s" value="{{talaba.kitob_soni}}">
+        <br>
+        <br>
+        <label>Bitruvchi: </label>
+        {% if talaba.bitruvchi %}
+        <input type="checkbox" name="b" checked>
+        {% else %}
+        <input type="checkbox" name="b">
+        {% endif %}
+        <br>
+        <br>
+        <button type="submit">Yangilash</button>
+    </form>
+</body>
+</html>

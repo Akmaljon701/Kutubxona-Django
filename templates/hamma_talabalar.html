@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talabalar</title>
+</head>
+<body>
+    <br>
+    <a href="/">◀Ortga</a>
+    <h1>Talabalar</h1>
+    <br>
+    <form method="get"> {% csrf_token %}
+        <input type="text" name="qidirish">
+        <button type="submit">Qidirish</button>
+    </form>
+    <br>
+    {% for talaba in talabalar %}
+    <p>{{talaba.id}}. <a href="/talaba/{{talaba.id}}/">{{talaba.ism}}</a></p>
+    {% endfor %}
+    <br>
+    <br>
+    <h1>Ma'lumot qo'shish:</h1>
+    <form action="/talabalar/" method="post"> {% csrf_token %}
+        {{forma.as_p}}
+        <button type="submit">Qo'shish</button>
+    </form>
+</body>
+</html>

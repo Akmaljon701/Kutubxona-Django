@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recordlar</title>
+</head>
+<body>
+    <br>
+    <a href="/">◀Ortga</a>
+    <h1>Tanlangan record</h1>
+    <p>Talaba: {{record.talaba}}</p>
+    <p>Kitob: {{record.kitob}}</p>
+    <p>Admin: {{record.admin}}</p>
+    <p>Olingan sana: {{record.olingan_sana}}</p>
+    <p>Qaytardi: {{record.qaytardi}}</p>
+    <p>Qaytargan sana: {{record.qaytargan_sana}}</p>
+    <br>
+    <a href="/record_ochrish/{{record.id}}/"><button>O'chrish</button></a>
+    <br>
+    <br>
+    <hr>
+    <h1>Tahrirlash:</h1>
+    <form method="post"> {% csrf_token %}
+        <label>Qaytardi:</label>
+        {% if record.qaytardi %}
+        <input type="checkbox" name="q" checked>
+        {% else %}
+        <input type="checkbox" name="q">
+        {% endif %}
+        <br>
+        <br>
+        <label>Qaytargan sana:</label>
+        <input type="date" name="q_s" value="{{record.qaytargan_sana}}">
+        <br>
+        <br>
+        <button type="submit">Yangilash</button>
+    </form>
+</body>
+</html>

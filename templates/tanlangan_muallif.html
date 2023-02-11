@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tanlangan muallif</title>
+</head>
+<body>
+    <br>
+    <a href="/mualliflar/">◀Ortga</a>
+    <h1>Tanlangan muallif:</h1>
+    <br>
+    <p>{{muallif.id}}, {{muallif.ism}}</p>
+    <p>{{muallif.tugilgan_yil}}</p>
+    <p>Muallif kitoblari soni - {{muallif.kitob_soni}} ta</p>
+    <p>Trik: {{muallif.trik}}</p>
+    <br>
+    <a href="/muallif_ochrish/{{muallif.id}}/"><button>O'chirish</button></a>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h1>Tahrirlash:</h1>
+    <form method="post"> {% csrf_token %}
+        <label>Ism:</label>
+        <input type="text" name="i" value="{{muallif.ism}}">
+        <br>
+        <br>
+        <label>Tug'ilgan yil:</label>
+        <input type="date" name="t_y" value="{{muallif.tugilgan_yil}}">
+        <br>
+        <br>
+        <label>Trik:</label>
+        {% if muallif.trik %}
+        <input type="checkbox" name="t" checked>
+        {% else %}
+        <input type="checkbox" name="t">
+        {% endif %}
+        <br>
+        <br>
+        <label>Kitob soni:</label>
+        <input type="number" name="k_s" value="{{muallif.kitob_soni}}">
+        <br>
+        <br>
+        <label>Jins:</label>
+        <select name="j">
+            <option value="Erkak">Erkak</option>
+            <option value="Ayol">Ayol</option>
+            <option value="Boshqa">Boshqa</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit">Yangilash</button>
+    </form>
+</body>
+</html>

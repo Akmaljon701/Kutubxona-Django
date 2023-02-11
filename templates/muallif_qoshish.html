@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Muallif qo'shish</title>
+</head>
+<body>
+    <h1>Muallif qo'shish:</h1>
+    <form action="" method="POST"> {% csrf_token %}
+      <br><br>
+        <label for="ism">F.I.Sh</label>
+        <input type="text" name="ism" placeholder="F.I.SH">
+      <br><br>
+        <label for="tugilgan_yil">Tugilgan yil</label>
+        <input type="date" name="tugilgan_yil">
+      <br><br>
+        <label for="trik">Trik</label>
+        <input type="checkbox" name="trik">
+      <br><br>
+        <label for="kitob_soni">Kitob soni</label>
+        <input type="number" name="kitob_soni">
+      <br><br>
+        <label for="jinsi">Jinsi</label>
+        <select name="jinsi">
+          <option value="Erkak">Erkak</option>
+          <option value="Ayol">Ayol</option>
+      </select>
+        <br>
+        <br>
+
+        <button type="submit">Qo'shish</button>
+
+    </form>
+</body>
+</html>
